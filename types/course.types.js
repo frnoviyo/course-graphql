@@ -3,6 +3,7 @@ module.exports = `
     id: ID!
     title: String!
     views: Int
+    user: User 
   }
 
   input CourseInput{
@@ -11,12 +12,12 @@ module.exports = `
   }
 
   extend type Query{
-    getCourses(page: Int, limit: Int = 1): [Course]
+    getCourses(page: Int, limit: Int = 3): [Course]
     getCourse(id: ID!): Course
   }
 
   extend type Mutation {
-    addCourse(input: CourseInput): Course
+    addCourse(input: CourseInput, user: ID!): Course
     updateCourse(id: ID!, input: CourseInput): Course
     deleteCourse(id: ID!): Alert
   }`;
