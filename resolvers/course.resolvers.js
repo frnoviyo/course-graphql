@@ -2,7 +2,8 @@ const Course = require("../models/course");
 const User = require("../models/user");
 module.exports = {
   Query: {
-    async getCourses(obj, { page, limit }) {
+    async getCourses(obj, { page, limit }, context) {
+      console.log(context);
       let courses = Course.find().populate("user");
       if (page !== undefined) {
         courses = courses.limit(limit).skip((page - 1) * limit);
